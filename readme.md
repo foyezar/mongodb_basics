@@ -18,6 +18,10 @@ $ db.collection.find()
   - db.dogs.find() - list objects in collection dogs
   - db.dogs.find({ name: "Rusty" }) - list objects in collection dogs where name == "Rusty"
 
+$ db.collection.deleteMany()
+$ db.collection.deleteOne()
+$ db.collection.FindOneAndDelete()
+
 $ db.collection.update()
   - db.dogs.update({ name: "Lulu"}, { breed: "Labradoodle" }) - over write objects with breed property where name == "Lulu"
   - db.dogs.update({ name: "Lucy" }, { $set: { name: "Tater", isCute: true }}) - update objects' name property & add isCute property where name == "Lucy"
