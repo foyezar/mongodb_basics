@@ -1,0 +1,15 @@
+{
+  "name": "mongodb_syntax",
+  "version": "1.0.0",
+  "description": "* mongod - start mongodb server\r * mongo - start mongo shell\r * help\r * show dbs - show database names\r * use <db_name> - set current database; if doesn't exist created new one",
+  "main": "cats.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Foyez",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "2.2.19",
+    "mongoose": "5.2.13"
+  }
+}
