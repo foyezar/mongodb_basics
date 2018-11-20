@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-// mongoose.connect("mongodb://localhost/cat_app");
+
+mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/cat_app", { useNewUrlParser: true });
 
 // Merge
@@ -8,10 +9,23 @@ mongoose.connect("mongodb://localhost/cat_app", { useNewUrlParser: true });
 //   age: Number,
 //   temperament: String
 // });
+
 const Cat = mongoose.model('Cat', {
-  name: String,
-  age: Number,
-  temperament: String
+  name: {
+    type: String,
+    required: true,
+    minlength: 1,
+    trim: true
+  },
+  age: {
+    type: Number,
+    required: true,
+    min: 5
+  },
+  temperament: {
+    type: String,
+    default: null
+  }
 });
 
 // adding a new cat to the DB
@@ -22,7 +36,7 @@ const Cat = mongoose.model('Cat', {
 //   temperament: 'Evil'
 // });
 
-// kitty.save((err, cat) => {
+// kitty.save().then((err, cat) => {
 //   if(err) {
 //     console.log('Something went wrong');
 //   } else {
@@ -35,12 +49,10 @@ Cat.create({
   name: 'Snow White',
   age: 15,
   temperament: 'Bland'
-}, (err, cat) => {
-  if(err) {
-    console.log(err);
-  } else {
-    console.log(cat);
-  }
+}).then((doc) => {
+  console.log('Saved cat: ', JSON.stringify(doc, undefined, 2));
+}).catch((e) => {
+  console.log('Unable to save in DB', e);
 });
 
 // retrieve all cats from the DB 

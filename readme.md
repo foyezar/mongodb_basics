@@ -34,3 +34,6 @@ $ db.collection.remove()
   - db.products.remove( { qty: { $gt: 20 } }, true ) - removes the first document from the collection products where qty is greater than 20
 ```
 CRUD - CREATE, READ, UPDATE, DELETE
+
+## Mongoose
+* ORM (Object Relational Mapping) library
